@@ -1,0 +1,98 @@
+
+<div *ngIf="quest" (click)="hideDetail()" class="detail-wrapper">
+  <div (click)="stopPropagation($event)" class="detail">
+    <div class="title">
+      <div class="name">
+        <h1>{{quest.name}}</h1>
+      </div>
+      <div class="icon">
+        <img src="{{quest.category | categoryIconURL}}" />
+        <img src="{{quest.term | termIconURL}}" class="term" />
+      </div>
+      <div class="pin">
+        <div [ngClass]="{'pin-button': true, 'pinned': isPinned}" (click)="switchPin()"></div>
+      </div>
+    </div>
+    <div class="discription">{{quest.discription}}</div>
+    <div class="info">
+      <div class="condition">
+        <h2>達成条件</h2>
+        <span>{{quest.condition}}</span>
+      </div>
+      <div class="composition" *ngIf="quest.composition">
+        <h2>編成指定</h2>
+        <ul class="composition-list">
+          <li *ngFor="let composition of quest.composition">
+            <div *ngIf="composition | compositionBannerURL as bannerURLs" class="banner">
+              <img *ngFor="let bannerURL of bannerURLs" src="{{bannerURL}}" />
+            </div>
+            <div class="ship-name">{{composition | compositionName}}</div>
+          </li>
+        </ul>
+      </div>
+      <div class="bonus">
+        <h2>獲得ボーナス</h2>
+        <ul class="resource">
+          <li class="fuel">{{quest.fuel}}</li>
+          <li class="ammo">{{quest.ammo}}</li>
+          <li class="steel">{{quest.steel}}</li>
+          <li class="bauxite">{{quest.bauxite}}</li>
+        </ul>
+        <ul class="other-list">
+          <li *ngFor="let other of quest.other">
+            <div *ngIf="other | bonusItemClass as bonusClass" class="{{bonusClass}}">
+              <img src="{{other | bonusItemIconURL}}" />
+              <svg *ngIf="other | bonusItemImprovement as bonusItemImprovement" class="bonus-improvement" width="50px" height="25px" viewbox="0 0 50 25">
+                <text class="background" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">{{bonusItemImprovement}}</text>
+                <text class="foreground" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">{{bonusItemImprovement}}</text>
+              </svg>
+              <div *ngIf="other | bonusItemQuantity as bonusItemQuantity" class="bonus-quantity">{{bonusItemQuantity}}</div>
+            </div>
+            <div class="bonus-name">{{other | bonusItemName}}</div>
+          </li>
+        </ul>
+      </div>
+      <div class="remark" *ngIf="quest.remark">
+        <h2>備考</h2>
+        <span>{{quest.remark}}</span>
+      </div>
+    </div>
+    <div class="chart">
+      <h2>開放チャート</h2>
+      <div class="chart-wrapper">
+        <quest-chart [quest]="quest"></quest-chart>
+      </div>
+    </div>
+    <div class="unlock">
+      <h2 (click)="openUnlock()" class="open-unlock">
+        <span>開放される任務一覧</span>
+        <span class="svg-arrow">
+            <svg [ngClass]="{'open': isOpen}" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35px" height="27px" viewBox="0 0 35 27">
+              <path d="M16.4,19.3L7,9.9C6.4,9.3,6.4,8.3,7,7.7c0.6-0.6,1.6-0.6,2.2,0l8.3,8.3l8.3-8.3c0.6-0.6,1.6-0.6,2.2,0 c0.6,0.6,0.6,1.6,0,2.2l-9.4,9.4c-0.3,0.3-0.7,0.4-1.1,0.4C17.1,19.8,16.7,19.6,16.4,19.3z"/>
+            </svg>
+        </span>
+      </h2>
+      <div [ngClass]="{'open': isOpen}" class="unlock-wrapper">
+        <ul>
+          <li *ngFor="let unlock of unlocks" (click)="jumpDetail(unlock)" class="quest">
+            <div class="icon">
+              <img src="{{unlock.category | categoryIconURL}}" />
+              <img src="{{unlock.term | termIconURL}}" class="term"/>
+            </div>
+            <div class="content">
+              <h3>{{unlock.name}}</h3>
+              <p>{{unlock.discription}}</p>
+              <ul class="resource">
+                  <li class="fuel">{{unlock.fuel}}</li>
+                  <li class="ammo">{{unlock.ammo}}</li>
+                  <li class="steel">{{unlock.steel}}</li>
+                  <li class="bauxite">{{unlock.bauxite}}</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div (click)="hideDetail()" class="close-button"></div>
+</div>

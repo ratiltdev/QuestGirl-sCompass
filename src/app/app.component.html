@@ -1,0 +1,61 @@
+<header>
+  <div id="menu">
+    <input id="menu-check" type="checkbox" name="menu_check">
+    <label for="menu-check" class="menu-button"></label>
+    <div class="menu-wrapper">
+      <div class="menu-view">
+        <div class="menu-container">
+          <h2>このサイトについて</h2>
+          <p>艦隊これくしょん -艦これ-における任務の各種情報を調べやすくすることを目的としたサイトです。</p>
+          <p>任務情報は主に、<a href="http://wikiwiki.jp/kancolle/" target="_blank">艦隊これくしょん -艦これ- 攻略 Wiki*</a>の内容を元にしています。<br>先人の皆様の検証に感謝申し上げます。</p>
+          <p>調査・更新は個人で行っているため、情報が古い・一致しない場合があります。<br>お気づきの点がありましたら、ご連絡いただけますと幸いです。</p>
+          <p>情報とは異なる条件で任務が出現した場合は、情報提供・検証にご協力ください。<br>情報の条件を達成しても任務が出現しない場合は、よくある質問もご一読ください。</p>
+          <p><b><a href="https://twitter.com/ratilt_feb/status/892049817442041856" target="_blank">使い方</a></b></p>
+          <h2>よくある任務関連の質問</h2>
+          <dl>
+            <dt>ウィークリー任務がトリガーとなっているワンス任務は、週をまたぐとトリガー任務からやり直しになりますか？</dt>
+            <dd>一度出現したワンス任務は消えません。</dd>
+            <dt>ウィークリー任務と、その他トリガーの任務を達成しましたが、後続の任務が出現しません。</dt>
+            <dd>ウィークリー任務は週ごとに達成フラグがリセットされるため、達成した週の内に全てのトリガー任務を達成する必要があります。<br>他のトリガー任務が達成済の場合は、改めてウィークリー任務を達成すればOKです。</dd>
+            <dt>トリガー任務は達成済ですが、クォータリー任務が出現しません。</dt>
+            <dd>トリガーにウィークリー任務が指定されている場合、クォータリー期間内で改めて任務を達成しないと達成フラグが立ちません。<br>翌週再度同任務を達成しましょう。</dd>
+          </dl>
+          <h2>ライセンス</h2>
+          <p><b><a href="http://kancolle.wikia.com/wiki/Kancolle_Wiki" target="_blank">Kancolle Wiki - ENGLISH WIKIA</a></b><br>著作権法第32条に基づき画像を引用しております。<br>著作権は権利者様側へ帰属しておりますので画像の転載・流用はご遠慮下さい。</p>
+          <p><b><a href="https://angular.io/" target="_blank">Angular</a></b><br><a href="https://github.com/angular/angular.js/blob/master/LICENSE" target="_blank">MIT License.</a></p>
+          <h2>連絡先</h2>
+          <p>Twitter : <a href="https://twitter.com/ratilt_" target="_blank">@ratilt_</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="term-buttons">
+    <li id="pin" [routerLink]="['/pin']" routerLinkActive="active"></li>
+    <li id="latest" [routerLink]="['/latest']" routerLinkActive="active">
+      <span>[新]<br>Latest</span>
+    </li>
+    <li id="daily" [routerLink]="['/daily']" routerLinkActive="active">
+      <span>[日]<br>Daily</span>
+    </li>
+    <li id="weekly" [routerLink]="['/weekly']" routerLinkActive="active">
+      <span>[週]<br>Weekly</span>
+    </li>
+    <li id="monthly" [routerLink]="['/monthly']" routerLinkActive="active">
+      <span>[月]<br>Monthly</span>
+    </li>
+    <li id="others" [routerLink]="['/others']" routerLinkActive="active">
+      <span>[他]<br>Others</span>
+    </li>
+    <li id="yearly" [routerLink]="['/yearly']" routerLinkActive="active">
+      <span>[年]<br>Yearly</span>
+    </li>
+  </ul>
+  <div class="search">
+    <input id="search-check" type="checkbox" name="search_check">
+    <label for="search-check" class="search-button"></label>
+    <div class="search-wrapper">
+      <search-form></search-form>
+    </div>
+  </div>
+</header>
+<router-outlet></router-outlet>

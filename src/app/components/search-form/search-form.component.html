@@ -1,0 +1,8 @@
+
+<form #f="ngForm" (ngSubmit)="search(f.value['search'])">
+  <div class="field">
+    <label for="search">検索</label>
+    <input type="text" id="search" placeholder="キーワード" name="search" ngModel />
+  </div>
+  <input type="submit" value="&#xf002;" />
+</form>

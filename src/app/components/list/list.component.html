@@ -1,0 +1,22 @@
+
+<div>
+    <ul>
+        <li *ngFor="let quest of questList" (click)="viewDetail(quest)" class="quest">
+            <div class="icon">
+                <img src="{{quest.category | categoryIconURL}}" />
+                <img src="{{quest.term | termIconURL}}" class="term"/>
+            </div>
+            <div class="content">
+                <h2>{{quest.name}}</h2>
+                <p>{{quest.discription}}</p>
+                <ul class="resource">
+                    <li class="fuel">{{quest.fuel}}</li>
+                    <li class="ammo">{{quest.ammo}}</li>
+                    <li class="steel">{{quest.steel}}</li>
+                    <li class="bauxite">{{quest.bauxite}}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+<router-outlet></router-outlet>

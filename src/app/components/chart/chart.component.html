@@ -1,0 +1,16 @@
+
+<div class="quest" (click)="switchDisplay()">
+  <div class="icon">
+    <img src="{{quest.category | categoryIconURL}}" />
+    <img src="{{quest.term | termIconURL}}" class="term" />
+  </div>
+  <div class="content">
+    <h3>{{quest.name}}</h3>
+    <p>{{quest.discription}}</p>
+  </div>
+</div>
+<ul *ngIf="quest">
+  <li *ngFor="let child of quest.child">
+    <quest-chart [quest]="child" [style.display]="child.display ? '' : 'none'"></quest-chart>
+  </li>
+</ul>
